@@ -9,7 +9,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  IMAGE: docker.io/jumdo12/random-string-generator
+  IMAGE: docker.io/jumdo12/lv3-final-mission
 
 jobs:
   build-and-push:
