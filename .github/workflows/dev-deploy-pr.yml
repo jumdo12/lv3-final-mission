@@ -50,6 +50,9 @@ jobs:
     runs-on: self-hosted
 
     steps:
+      - name: Docker login
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
       - name: Stop and remove old container
         run: |
           docker stop dev-server || true
