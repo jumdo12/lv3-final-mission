@@ -44,3 +44,25 @@ jobs:
             -t "$IMAGE:${{ env.TAG }}" \
             -t "$IMAGE:latest" \
             . --push
+
+    deploy:
+      needs: [ build-and-push ]
+      runs-on: self-hosted
+
+      steps:
+        - name: Stop and remove old container
+          run: |
+            docker stop dev-server || true
+            docker rm dev-server || true
+
+        - name: Pull the latest image
+          run: |
+            docker pull jumdo12/lv3-final-mission:latest
+
+        - name: Run the new container
+          run: |
+            docker run -d \
+              --name dev-server \
+              -e SPRING_PROFILES_ACTIVE=dev \
+              -p 8080:8080 \
+              jumdo12/lv3-final-mission:latest
