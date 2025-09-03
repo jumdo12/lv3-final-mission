@@ -1,6 +1,6 @@
 spring:
   application:
-    name: lv2-final-mission
+    name: lv3-final-mission
   datasource:
     url: jdbc:mysql://db:3306/my_database_name?useSSL=false
     username: my_mysql_user
