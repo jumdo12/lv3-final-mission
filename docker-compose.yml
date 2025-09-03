@@ -8,13 +8,8 @@ services:
       - SPRING_DATASOURCE_URL=${SPRING_DATASOURCE_URL}
       - SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME}
       - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
-    depends_on:
-      - mysql
     networks:
       - backend
 networks:
   app-network:
     driver: bridge # 가장 일반적인 브릿지 네트워크 타입입니다.
-
-volumes:
-  db_data: # 'db_data'라는 이름의 볼륨. Docker가 이 볼륨을 관리합니다.
