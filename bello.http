@@ -1,0 +1,4 @@
+POST http://localhost:8080/umbrellas
+Content-Type: application/json
+
+

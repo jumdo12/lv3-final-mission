@@ -1,0 +1,36 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL:  jdbc:mysql://db:3306/my_database_name?useSSL=false
+      SPRING_DATASOURCE_USERNAME: my_mysql_user
+      SPRING_DATASOURCE_PASSWORD: my_mysql_password
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  db:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+    environment: # MySQL 컨테이너의 환경 변수를 설정합니다.
+      MYSQL_DATABASE: my_database_name         # 생성할 데이터베이스 이름 (Spring 앱과 동일해야 합니다)
+      MYSQL_ROOT_PASSWORD: my_mysql_root_password # MySQL 'root' 계정의 비밀번호
+      MYSQL_USER: my_mysql_user                   # 새로 생성할 일반 사용자 계정 (Spring 앱과 동일해야 합니다)
+      MYSQL_PASSWORD: my_mysql_password
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app-network
+    restart: on-failure
+
+networks:
+  app-network:
+    driver: bridge # 가장 일반적인 브릿지 네트워크 타입입니다.
+
+volumes:
+  db_data: # 'db_data'라는 이름의 볼륨. Docker가 이 볼륨을 관리합니다.
