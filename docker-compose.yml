@@ -12,4 +12,5 @@ services:
       - backend
 networks:
   app-network:
-    driver: bridge # 가장 일반적인 브릿지 네트워크 타입입니다.
+    driver: bridge
+
