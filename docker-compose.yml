@@ -4,10 +4,6 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: spring
-    environment:
-      SPRING_DATASOURCE_URL: "jdbc:mysql://guyon-dev.cqsc6pyqhwww.ap-northeast-2.rds.amazonaws.com:3306/mydb?useSSL=false&serverTimezone=UTC"
-      SPRING_DATASOURCE_USERNAME: "guyon"
-      SPRING_DATASOURCE_PASSWORD: "5T=f=Zd=DhtT.(ozj4o&-i(}LNQ"
     networks:
       - backend
 networks:

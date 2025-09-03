@@ -1,10 +1,6 @@
 spring:
   application:
     name: lv3-final-mission
-  datasource:
-    url: ${SPRING_DATASOURCE_URL}
-    username: ${SPRING_DATASOURCE_USERNAME}
-    password: ${SPRING_DATASOURCE_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update
@@ -14,4 +10,4 @@ spring:
         format_sql: true
 
 weather-api:
-  secret-key: ${WEATHER_API_SECRET_KEY:}
+  secret-key:
