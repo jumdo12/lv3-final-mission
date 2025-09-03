@@ -1,10 +1,6 @@
 spring:
   application:
     name: lv3-final-mission
-  datasource:
-    url: jdbc:mysql://db:3306/my_database_name?useSSL=false
-    username: my_mysql_user
-    password: my_mysql_password
   jpa:
     hibernate:
       ddl-auto: update

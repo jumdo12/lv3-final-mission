@@ -1,0 +1,13 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:mysql://guyon-dev.cqsc6pyqhwww.ap-northeast-2.rds.amazonaws.com:3306/guyon?sslMode=REQUIRED&serverTimezone=Asia/Seoul
+    username: guyon
+    password: "5T=f=Zd=DhtT.(ozj4o&-i(}LNQ"
+  jpa:
+    hibernate:
+      ddl-auto: update
+weather-api:
+  secret-key:

@@ -1,3 +1,5 @@
+version: "3.8"
+
 services:
   application:
     build:
@@ -5,11 +7,13 @@ services:
       dockerfile: Dockerfile
     container_name: spring
     environment:
-      - SPRING_DATASOURCE_URL=${SPRING_DATASOURCE_URL}
-      - SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME}
-      - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
+      SPRING_PROFILES_ACTIVE: dev
+    ports:
+      - "8080:8080"
     networks:
-      - backend
+      - app-network
+    restart: unless-stopped
+
 networks:
   app-network:
-    driver: bridge # 가장 일반적인 브릿지 네트워크 타입입니다.
+    driver: bridge
