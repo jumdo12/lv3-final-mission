@@ -1,20 +1,11 @@
-FROM openjdk:21-jdk-slim as builder
+FROM eclipse-temurin:21-jre
+
 WORKDIR /app
 
-COPY gradlew .
-COPY gradle/ ./gradle/
-COPY build.gradle .
-COPY settings.gradle .
-COPY src src
+ARG JAR_FILE=build/libs/*.jar
 
-RUN chmod +x ./gradlew
+COPY ${JAR_FILE} app.jar
 
-RUN ./gradlew clean build -x test --no-daemon
+EXPOSE 8080
 
-
-FROM openjdk:21-jdk-slim
-WORKDIR /app
-
-COPY --from=builder /app/build/libs/*jar app.jar
-
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar","/app/app.jar"]
